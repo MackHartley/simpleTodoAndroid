@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SimpleTodo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="clientId">vMlIEKl0RR6nYDqsh0FfWfQnYt5O6G1Z</string>
+    <string name="com_auth0_domain">simpletodo.us.auth0.com</string>
+    <string name="log_out">Log Out</string>
+    <string name="auth_scheme">simpletodo</string>
+</resources>

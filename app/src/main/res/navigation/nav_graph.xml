@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/getStartedFragment">
+    <fragment
+        android:id="@+id/getStartedFragment"
+        android:name="com.mackhartley.simpletodo.getStarted.GetStartedFragment"
+        android:label="GetStartedFragment">
+        <action
+            android:id="@+id/login"
+            app:destination="@id/todoListFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/todoListFragment"
+        android:name="com.mackhartley.simpletodo.todoList.TodoListFragment"
+        android:label="TodoListFragment">
+        <action
+            android:id="@+id/view_details"
+            app:destination="@id/todoDetailsFragment" />
+        <action
+            android:id="@+id/logout"
+            app:destination="@id/getStartedFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/todoDetailsFragment"
+        android:name="com.mackhartley.simpletodo.todoDetails.TodoDetailsFragment"
+        android:label="TodoDetailsFragment">
+
+        <argument
+            android:name="todoItem"
+            app:argType="com.mackhartley.simpletodo.TodoItem" />
+
+    </fragment>
+</navigation>
