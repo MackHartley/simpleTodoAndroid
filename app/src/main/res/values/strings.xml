@@ -14,7 +14,7 @@
     <string name="current_account">Current Account:</string>
     <string name="todo_item_added">Todo item added</string>
     <string name="complete_task">Complete Task?</string>
-    <string name="complete_task_desc">This action will delete the task which cannot be undone</string>
+    <string name="complete_task_desc">This action will delete the task, which cannot be undone</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="refreshing">Refreshing...</string>
