@@ -8,7 +8,7 @@
         android:name="com.mackhartley.simpletodo.getStarted.GetStartedFragment"
         android:label="GetStartedFragment">
         <action
-            android:id="@+id/login"
+            android:id="@+id/action_getStartedFragment_to_todoListFragment"
             app:destination="@id/todoListFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
@@ -18,13 +18,14 @@
         android:name="com.mackhartley.simpletodo.todoList.TodoListFragment"
         android:label="TodoListFragment">
         <action
-            android:id="@+id/view_details"
+            android:id="@+id/action_todoListFragment_to_todoDetailsFragment"
             app:destination="@id/todoDetailsFragment" />
         <action
-            android:id="@+id/logout"
-            app:destination="@id/getStartedFragment"
-            app:popUpTo="@id/main_graph"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_todoListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_todoListFragment_to_addTodoFragment"
+            app:destination="@id/addTodoFragment" />
     </fragment>
     <fragment
         android:id="@+id/todoDetailsFragment"
@@ -34,6 +35,27 @@
         <argument
             android:name="todoItem"
             app:argType="com.mackhartley.simpletodo.TodoItem" />
+        <action
+            android:id="@+id/action_todoDetailsFragment_to_todoListFragment"
+            app:destination="@id/todoListFragment" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mackhartley.simpletodo.settings.SettingsFragment"
+        android:label="SettingsFragment">
+        <action
+            android:id="@+id/action_settingsFragment_to_getStartedFragment"
+            app:destination="@id/getStartedFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTodoFragment"
+        android:name="com.mackhartley.simpletodo.addTodo.AddTodoFragment"
+        android:label="AddTodoFragment">
+        <action
+            android:id="@+id/action_addTodoFragment_to_todoListFragment"
+            app:destination="@id/todoListFragment" />
     </fragment>
 </navigation>

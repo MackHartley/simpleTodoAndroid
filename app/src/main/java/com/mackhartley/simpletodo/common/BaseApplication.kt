@@ -1,8 +1,10 @@
 package com.mackhartley.simpletodo.common
 
 import android.app.Application
+import com.mackhartley.simpletodo.addTodo.di.addTodoModule
 import com.mackhartley.simpletodo.common.di.commonModule
 import com.mackhartley.simpletodo.getStarted.di.getStartedModule
+import com.mackhartley.simpletodo.settings.di.settingsModule
 import com.mackhartley.simpletodo.todoDetails.di.todoDetailsModule
 import com.mackhartley.simpletodo.todoList.di.todoListModule
 import org.koin.android.ext.koin.androidContext
@@ -15,7 +17,7 @@ class BaseApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@BaseApplication)
-            modules(commonModule, getStartedModule, todoListModule, todoDetailsModule)
+            modules(commonModule, getStartedModule, todoListModule, todoDetailsModule, settingsModule, addTodoModule)
         }
     }
 }

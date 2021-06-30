@@ -5,5 +5,5 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val todoDetailsModule = module {
-    viewModel { TodoDetailsViewModel(get(), get()) }
+    viewModel { TodoDetailsViewModel(get()) }
 }

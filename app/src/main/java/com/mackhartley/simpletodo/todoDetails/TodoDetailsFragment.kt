@@ -9,13 +9,10 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mackhartley.simpletodo.R
 import com.mackhartley.simpletodo.TodoItem
-import com.mackhartley.simpletodo.common.models.NewTodoItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.IO_PARALLELISM_PROPERTY_NAME
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.coroutines.CoroutineContext
 
 class TodoDetailsFragment : Fragment() {
     override fun onCreateView(
@@ -32,9 +29,8 @@ class TodoDetailsFragment : Fragment() {
         fab?.let {
             it.setOnClickListener {
                 CoroutineScope(IO).launch {
-//                    val x = todoDetailsViewModel.getTodos()
-//                    println(x)
-                    todoDetailsViewModel.makecall()
+
+                    //todo
                 }
             }
         }

@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SimpleTodo"
         android:usesCleartextTraffic="true">
-        <activity android:name=".common.MainActivity">
+        <activity
+            android:name=".common.MainActivity"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -7,11 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.auth0.android.Auth0
-import com.auth0.android.authentication.AuthenticationAPIClient
 import com.auth0.android.authentication.AuthenticationException
-import com.auth0.android.authentication.storage.CredentialsManager
-import com.auth0.android.authentication.storage.SharedPreferencesStorage
 import com.auth0.android.callback.Callback
 import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
@@ -52,7 +48,7 @@ class GetStartedFragment : Fragment() {
                 // Called when authentication completed successfully
                 override fun onSuccess(credentials: Credentials) {
                     getStartedViewModel.saveCredentials(credentials)
-                    findNavController().navigate(R.id.login)
+                    findNavController().navigate(R.id.action_getStartedFragment_to_todoListFragment)
                 }
             })
     }

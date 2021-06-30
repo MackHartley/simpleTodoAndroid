@@ -1,23 +1,20 @@
 package com.mackhartley.simpletodo.todoList
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
+import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.auth0.android.authentication.AuthenticationException
-import com.auth0.android.callback.Callback
-import com.auth0.android.provider.WebAuthProvider
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mackhartley.simpletodo.R
+import com.mackhartley.simpletodo.TodoItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TodoListFragment : Fragment() {
 
-    val todoViewModel: TodoViewModel by viewModel()
+    val todoListViewModel: TodoListViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,36 +23,46 @@ class TodoListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_todo_list, container, false)
 
-        val todoRv = view.findViewById<RecyclerView>(R.id.todo_rv)
-        todoRv.layoutManager = LinearLayoutManager(context)
         val todoAdapter = TodoListAdapter {
-            val action = TodoListFragmentDirections.viewDetails(it)
+            val action = TodoListFragmentDirections.actionTodoListFragmentToTodoDetailsFragment(it)
             findNavController().navigate(action)
         }
-        todoRv.adapter = todoAdapter
+        setUpRV(view, todoAdapter)
+        setUpFab(view)
+        setUpObserver(todoAdapter)
 
-        val logOutBtn = view.findViewById<Button>(R.id.log_out_btn)
-        logOutBtn.setOnClickListener {
-            logout()
-        }
-
-        val fakeData = todoViewModel.getTodos()
-        todoAdapter.setData(fakeData)
-
+        setHasOptionsMenu(true)
         return view
     }
 
-    private fun logout() {
-        WebAuthProvider.logout(todoViewModel.getAuthAccount())
-            .withScheme(getString(R.string.auth_scheme))
-            .start(requireContext(), object: Callback<Void?, AuthenticationException> {
-                override fun onSuccess(payload: Void?) {
-                    findNavController().navigate(R.id.logout)
-                }
+    private fun setUpObserver(todoAdapter: TodoListAdapter) {
+        val todoListObserver = Observer<List<TodoItem>> {
+            todoAdapter.setData(it)
+        }
+        todoListViewModel.todoList.observe(viewLifecycleOwner, todoListObserver)
+    }
 
-                override fun onFailure(error: AuthenticationException) {
-                    // Something went wrong!
-                }
-            })
+    private fun setUpFab(view: View) {
+        val fab = view.findViewById<FloatingActionButton>(R.id.fab_add_todo)
+        fab.setOnClickListener {
+            findNavController().navigate(R.id.action_todoListFragment_to_addTodoFragment)
+        }
+    }
+
+    private fun setUpRV(view: View, todoAdapter: TodoListAdapter) {
+        val todoRv = view.findViewById<RecyclerView>(R.id.todo_rv)
+        todoRv.layoutManager = LinearLayoutManager(context)
+        todoRv.adapter = todoAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.todo_list_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.settingsFragment -> findNavController().navigate(R.id.action_todoListFragment_to_settingsFragment)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

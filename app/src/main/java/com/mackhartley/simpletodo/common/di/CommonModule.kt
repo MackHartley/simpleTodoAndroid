@@ -6,6 +6,7 @@ import com.auth0.android.authentication.storage.CredentialsManager
 import com.auth0.android.authentication.storage.SharedPreferencesStorage
 import com.mackhartley.simpletodo.R
 import com.mackhartley.simpletodo.common.TodoRepo
+import com.mackhartley.simpletodo.common.network.AuthInterceptor
 import com.mackhartley.simpletodo.common.network.TodoRetrofitConfigs.baseUrl
 import com.mackhartley.simpletodo.common.network.TodoService
 import okhttp3.OkHttpClient
@@ -16,17 +17,24 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 val commonModule = module {
-    single<TodoRepo> { TodoRepo() }
     single<Auth0> {
         Auth0(
             androidContext().getString(R.string.clientId),
             androidContext().getString(R.string.com_auth0_domain)
         )
     }
+    single<AuthInterceptor> {
+        AuthInterceptor(get())
+    }
     single<TodoService> {
+
+        val myInt: AuthInterceptor = get()
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
+        val client: OkHttpClient = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .addInterceptor(myInt)
+            .build()
 
         val retrofitInstance = Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -42,9 +50,12 @@ val commonModule = module {
     single<SharedPreferencesStorage> {
         SharedPreferencesStorage(androidContext())
     }
-    single<CredentialsManager>{
+    single<CredentialsManager> {
         val authApiClient: AuthenticationAPIClient = get()
         val sharedPrefsStorage: SharedPreferencesStorage = get()
         CredentialsManager(authApiClient, sharedPrefsStorage)
+    }
+    single<TodoRepo> {
+        TodoRepo(get())
     }
 }

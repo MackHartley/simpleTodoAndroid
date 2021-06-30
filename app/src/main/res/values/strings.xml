@@ -5,4 +5,11 @@
     <string name="com_auth0_domain">simpletodo.us.auth0.com</string>
     <string name="log_out">Log Out</string>
     <string name="auth_scheme">simpletodo</string>
+    <string name="settings">Settings</string>
+    <string name="add_todo">Add Todo</string>
+    <string name="add_todo_error">There was an error adding your todo. Please try again later</string>
+    <string name="get_started">Get Started</string>
+    <string name="your_todo_item">Your Todo Item:</string>
+    <string name="start_typing_your_todo_here">Start typing your todo here...</string>
+    <string name="current_account">Current Account:</string>
 </resources>
