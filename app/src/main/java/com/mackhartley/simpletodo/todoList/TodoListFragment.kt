@@ -10,11 +10,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mackhartley.simpletodo.R
 import com.mackhartley.simpletodo.TodoItem
+import com.mackhartley.simpletodo.common.ext.showError
+import com.mackhartley.simpletodo.common.ext.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TodoListFragment : Fragment() {
 
-    val todoListViewModel: TodoListViewModel by viewModel()
+    private val todoListViewModel: TodoListViewModel by viewModel()
+    private val todoAdapter = TodoListAdapter {
+        val action = TodoListFragmentDirections.actionTodoListFragmentToTodoDetailsFragment(it)
+        findNavController().navigate(action)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,21 +29,21 @@ class TodoListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_todo_list, container, false)
 
-        val todoAdapter = TodoListAdapter {
-            val action = TodoListFragmentDirections.actionTodoListFragmentToTodoDetailsFragment(it)
-            findNavController().navigate(action)
-        }
         setUpRV(view, todoAdapter)
         setUpFab(view)
-        setUpObserver(todoAdapter)
+        setUpObserver()
 
         setHasOptionsMenu(true)
         return view
     }
 
-    private fun setUpObserver(todoAdapter: TodoListAdapter) {
-        val todoListObserver = Observer<List<TodoItem>> {
-            todoAdapter.setData(it)
+    private fun setUpObserver() {
+        val todoListObserver = Observer<List<TodoItem>?> {
+            if (it != null) {
+                todoAdapter.setData(it)
+            } else {
+                showError()
+            }
         }
         todoListViewModel.todoList.observe(viewLifecycleOwner, todoListObserver)
     }
@@ -62,6 +68,11 @@ class TodoListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.settingsFragment -> findNavController().navigate(R.id.action_todoListFragment_to_settingsFragment)
+            R.id.refreshData -> {
+                todoAdapter.setData(emptyList())
+                showToast(getString(R.string.refreshing))
+                todoListViewModel.refreshData()
+            }
         }
         return super.onOptionsItemSelected(item)
     }

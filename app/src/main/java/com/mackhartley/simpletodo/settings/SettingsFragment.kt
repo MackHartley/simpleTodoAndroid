@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.authentication.AuthenticationException
 import com.auth0.android.callback.Callback
 import com.auth0.android.provider.WebAuthProvider
 import com.mackhartley.simpletodo.R
+import com.mackhartley.simpletodo.common.ext.showError
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment : Fragment() {
@@ -43,9 +43,8 @@ class SettingsFragment : Fragment() {
                     settingsViewModel.clearSavedCredentials()
                     findNavController().navigate(R.id.action_settingsFragment_to_getStartedFragment)
                 }
-
                 override fun onFailure(error: AuthenticationException) {
-                    Toast.makeText(context, getString(R.string.add_todo_error), Toast.LENGTH_LONG).show()
+                    showError()
                 }
             })
     }

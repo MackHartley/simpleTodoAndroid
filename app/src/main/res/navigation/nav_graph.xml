@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/getStartedFragment"
         android:name="com.mackhartley.simpletodo.getStarted.GetStartedFragment"
-        android:label="GetStartedFragment">
+        android:label="Sign In">
         <action
             android:id="@+id/action_getStartedFragment_to_todoListFragment"
             app:destination="@id/todoListFragment"
@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/todoListFragment"
         android:name="com.mackhartley.simpletodo.todoList.TodoListFragment"
-        android:label="TodoListFragment">
+        android:label="Todo List">
         <action
             android:id="@+id/action_todoListFragment_to_todoDetailsFragment"
             app:destination="@id/todoDetailsFragment" />
@@ -30,20 +30,22 @@
     <fragment
         android:id="@+id/todoDetailsFragment"
         android:name="com.mackhartley.simpletodo.todoDetails.TodoDetailsFragment"
-        android:label="TodoDetailsFragment">
+        android:label="Todo Details">
 
         <argument
             android:name="todoItem"
             app:argType="com.mackhartley.simpletodo.TodoItem" />
         <action
             android:id="@+id/action_todoDetailsFragment_to_todoListFragment"
-            app:destination="@id/todoListFragment" />
+            app:destination="@id/todoListFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
 
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.mackhartley.simpletodo.settings.SettingsFragment"
-        android:label="SettingsFragment">
+        android:label="Settings">
         <action
             android:id="@+id/action_settingsFragment_to_getStartedFragment"
             app:destination="@id/getStartedFragment"
@@ -53,9 +55,11 @@
     <fragment
         android:id="@+id/addTodoFragment"
         android:name="com.mackhartley.simpletodo.addTodo.AddTodoFragment"
-        android:label="AddTodoFragment">
+        android:label="Add New Todo">
         <action
             android:id="@+id/action_addTodoFragment_to_todoListFragment"
-            app:destination="@id/todoListFragment" />
+            app:destination="@id/todoListFragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

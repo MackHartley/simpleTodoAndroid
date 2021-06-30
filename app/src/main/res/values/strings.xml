@@ -7,9 +7,15 @@
     <string name="auth_scheme">simpletodo</string>
     <string name="settings">Settings</string>
     <string name="add_todo">Add Todo</string>
-    <string name="add_todo_error">There was an error adding your todo. Please try again later</string>
+    <string name="network_error_msg">There was an issue with your request. Please try again later.</string>
     <string name="get_started">Get Started</string>
     <string name="your_todo_item">Your Todo Item:</string>
     <string name="start_typing_your_todo_here">Start typing your todo here...</string>
     <string name="current_account">Current Account:</string>
+    <string name="todo_item_added">Todo item added</string>
+    <string name="complete_task">Complete Task?</string>
+    <string name="complete_task_desc">This action will delete the task which cannot be undone</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="refreshing">Refreshing...</string>
 </resources>

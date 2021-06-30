@@ -1,12 +1,19 @@
 package com.mackhartley.simpletodo.todoDetails
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.mackhartley.simpletodo.TodoItem
+import androidx.lifecycle.liveData
 import com.mackhartley.simpletodo.common.TodoRepo
 
 class TodoDetailsViewModel(
     private val todoRepo: TodoRepo
 ) : ViewModel() {
-
-    //todo
+    fun deleteTodo(todoId: Int): LiveData<Boolean> = liveData {
+        try {
+            val isSuccess = todoRepo.deleteTodo(todoId)
+            emit(isSuccess)
+        } catch (e: Exception) {
+            emit(false)
+        }
+    }
 }

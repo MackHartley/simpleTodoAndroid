@@ -6,16 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.mackhartley.simpletodo.R
+import com.mackhartley.simpletodo.common.ext.showError
+import com.mackhartley.simpletodo.common.ext.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddTodoFragment : Fragment() {
 
-    val addTodoViewModel: AddTodoViewModel by viewModel()
+    private val addTodoViewModel: AddTodoViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,9 +41,10 @@ class AddTodoFragment : Fragment() {
         val addTodoObserver = Observer<Boolean> { isSuccess ->
             if (isSuccess) {
                 findNavController().navigate(R.id.action_addTodoFragment_to_todoListFragment)
+                showToast(getString(R.string.todo_item_added))
             } else {
                 button.isEnabled = true
-                Toast.makeText(context, getString(R.string.add_todo_error), Toast.LENGTH_LONG).show()
+                showError()
             }
         }
 

@@ -7,10 +7,10 @@ import retrofit2.http.POST
 
 interface TodoService {
 
-    @GET("getTodos/Test")
+    @GET("getTodos")
     suspend fun getTodoItems(): List<TodoItem>
 
-    @POST("addTodo/Test")
+    @POST("addTodo")
     suspend fun addTodoItem(@Body newTodoText: String): Boolean
 
     @POST("deleteTodo")

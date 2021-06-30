@@ -4,6 +4,13 @@
     <item
         android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_baseline_settings_24"
-        app:showAsAction="always"
-        android:title="@string/settings" />
+        android:orderInCategory="100"
+        android:title="@string/settings"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/refreshData"
+        android:icon="@drawable/ic_baseline_refresh_24"
+        android:orderInCategory="50"
+        android:title="@string/settings"
+        app:showAsAction="ifRoom" />
 </menu>
