@@ -6,16 +6,31 @@
     android:padding="@dimen/fragment_content_padding">
 
     <TextView
+        android:id="@+id/info_text_1"
+        style="@style/TextAppearance.MaterialComponents.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/get_started_btn"
+        android:text="@string/info_text_1"
         android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/info_text_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/info_text_2"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:padding="8dp"
-        android:layout_marginBottom="8dp"
-        style="@style/TextAppearance.MaterialComponents.Body2"
-        android:text="Welcome to SimpleTodo, the simplest, open source todo app on Android. Log in or sign up to get started." />
+        android:text="@string/info_text_2"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/get_started_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_text_1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/get_started_btn"
@@ -25,6 +40,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/info_text_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

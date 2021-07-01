@@ -18,4 +18,13 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="refreshing">Refreshing...</string>
+    <string name="info_text_1">Welcome to SimpleTodo: The simplest, open source todo app on Android</string>
+    <string name="info_text_2">Sign in or create an account to get started</string>
+    <string name="about_this_app">About This App</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="about">About</string>
+    <string name="about_txt">This app and it\'s backend server were created by Mack Hartley. The source code for the app and server are publicly available on Github</string>
+    <string name="close">Close</string>
+    <string name="visit_github">Visit Github</string>
 </resources>
