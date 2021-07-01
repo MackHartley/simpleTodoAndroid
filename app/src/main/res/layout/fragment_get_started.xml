@@ -5,11 +5,23 @@
     android:layout_height="match_parent"
     android:padding="@dimen/fragment_content_padding">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/get_started_btn"
+        android:textAlignment="center"
+        android:padding="8dp"
+        android:layout_marginBottom="8dp"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:text="Welcome to SimpleTodo, the simplest, open source todo app on Android. Log in or sign up to get started." />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/get_started_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/get_started"
+        android:text="@string/sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

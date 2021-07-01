@@ -8,7 +8,6 @@ class SettingsViewModel(
     private val authAccount: Auth0,
     private val credentialsManager: CredentialsManager
 ) : ViewModel() {
-    fun getCurrentAccountEmail(): String = "example@gmail.com"
     fun getAuthAccount(): Auth0 = authAccount
     fun clearSavedCredentials() {
         credentialsManager.clearCredentials()

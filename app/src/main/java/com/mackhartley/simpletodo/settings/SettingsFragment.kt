@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.auth0.android.authentication.AuthenticationException
@@ -26,10 +25,7 @@ class SettingsFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_settings, container, false)
-        val emailView = view.findViewById<TextView>(R.id.current_account_value)
         val logOutBtn = view.findViewById<Button>(R.id.log_out_btn)
-
-        emailView.text = settingsViewModel.getCurrentAccountEmail()
         logOutBtn.setOnClickListener { logout() }
 
         return view

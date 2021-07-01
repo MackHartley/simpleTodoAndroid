@@ -40,15 +40,15 @@ class GetStartedFragment : Fragment() {
             .withAudience("https://simple-todo-api.mackhartley.com")
             // Launch the authentication passing the callback where the results will be received
             .start(requireContext(), object : Callback<Credentials, AuthenticationException> {
-                // Called when there is an authentication failure
-                override fun onFailure(exception: AuthenticationException) {
-                    // Something went wrong!
-                }
-
                 // Called when authentication completed successfully
                 override fun onSuccess(credentials: Credentials) {
                     getStartedViewModel.saveCredentials(credentials)
                     findNavController().navigate(R.id.action_getStartedFragment_to_todoListFragment)
+                }
+
+                // Called when there is an authentication failure
+                override fun onFailure(exception: AuthenticationException) {
+                    // Something went wrong!
                 }
             })
     }
