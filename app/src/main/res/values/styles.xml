@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyCardView">
+        <item name="android:background">@color/standard_background</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+    </style>
+</resources>

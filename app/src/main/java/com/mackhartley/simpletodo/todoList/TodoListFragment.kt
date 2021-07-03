@@ -2,6 +2,7 @@ package com.mackhartley.simpletodo.todoList
 
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -28,18 +29,24 @@ class TodoListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_todo_list, container, false)
+        val emptyView = view.findViewById<TextView>(R.id.empty_todo_list_label)
 
         setUpRV(view, todoAdapter)
         setUpFab(view)
-        setUpObserver()
+        setUpObserver(emptyView)
 
         setHasOptionsMenu(true)
         return view
     }
 
-    private fun setUpObserver() {
+    private fun setUpObserver(emptyView: TextView) {
         val todoListObserver = Observer<List<TodoItem>?> {
             if (it != null) {
+                if (it.isNotEmpty()) {
+                    emptyView.visibility = View.GONE
+                } else {
+                    emptyView.visibility = View.VISIBLE
+                }
                 todoAdapter.setData(it)
             } else {
                 showError()

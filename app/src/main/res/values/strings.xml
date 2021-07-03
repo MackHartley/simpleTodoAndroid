@@ -27,4 +27,5 @@
     <string name="about_txt">This app and it\'s backend server were created by Mack Hartley. The source code for the app and server are publicly available on Github</string>
     <string name="close">Close</string>
     <string name="visit_github">Visit Github</string>
+    <string name="your_todo_list_is_empty">Your todo list is empty...</string>
 </resources>
