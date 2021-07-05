@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mackhartley.simpletodo.R
 import com.mackhartley.simpletodo.TodoItem
+import com.mackhartley.simpletodo.common.ext.setLoading
 import com.mackhartley.simpletodo.common.ext.showError
 import com.mackhartley.simpletodo.common.ext.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -51,7 +52,9 @@ class TodoListFragment : Fragment() {
             } else {
                 showError()
             }
+            setLoading(false)
         }
+        setLoading(true)
         todoListViewModel.todoList.observe(viewLifecycleOwner, todoListObserver)
     }
 
@@ -78,6 +81,7 @@ class TodoListFragment : Fragment() {
             R.id.refreshData -> {
                 todoAdapter.setData(emptyList())
                 showToast(getString(R.string.refreshing))
+                setLoading(true)
                 todoListViewModel.refreshData()
             }
         }

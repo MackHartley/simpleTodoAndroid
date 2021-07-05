@@ -15,6 +15,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 val commonModule = module {
     single<Auth0> {
@@ -34,6 +35,7 @@ val commonModule = module {
         val client: OkHttpClient = OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .addInterceptor(myInt)
+            .connectTimeout(45, TimeUnit.SECONDS)
             .build()
 
         val retrofitInstance = Retrofit.Builder()
