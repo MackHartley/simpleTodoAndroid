@@ -35,7 +35,8 @@ val commonModule = module {
         val client: OkHttpClient = OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .addInterceptor(myInt)
-            .connectTimeout(45, TimeUnit.SECONDS)
+            .connectTimeout(40, TimeUnit.SECONDS)
+            .readTimeout(40, TimeUnit.SECONDS)
             .build()
 
         val retrofitInstance = Retrofit.Builder()
