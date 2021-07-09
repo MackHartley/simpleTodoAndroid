@@ -1,7 +1,7 @@
 # SimpleTodo
 The SimpleTodo app is a todo app for Android. It is simple, free and open source. 
 
-I decided to make this app because I wanted to practice creating REST APIs with the [Play Framework](https://www.playframework.com/). Additionally, I wanted to get more familiar with OAuth2.0 authentication so I decided to implement the [Authorization Code Flow with PKCE](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce). Below is a summary of the tech stack used for this project:
+I decided to make this app because I wanted to practice creating REST APIs with the [Play Framework](https://www.playframework.com/). Additionally, I wanted to get more familiar with OAuth2.0 authentication so I decided to implement the [Authorization Code Flow Grant with PKCE](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce). Below is a summary of the tech stack used for this project:
 | System            | Technologies Used |
 | ----------------- | ----------------- |
 | Andoid App        | Kotlin, Coroutines, Koin, Retrofit, MVVM, Single Activity Multi Fragment|
