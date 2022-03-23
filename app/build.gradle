@@ -13,7 +13,7 @@ android {
         applicationId "com.mackhartley.simpletodo"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 6
+        versionCode 7
         versionName "1.3.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
